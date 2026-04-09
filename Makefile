@@ -12,7 +12,7 @@ PKG_RELEASE:=2
 PKG_MAINTAINER:=Lienol <lawlienol@gmail.com>
 
 LUCI_TITLE:=LuCI support for IPSec VPN Server
-LUCI_DEPENDS:=+kmod-tun +luci-lib-jsonc +strongswan +strongswan-minimal +strongswan-mod-kernel-libipsec +strongswan-mod-openssl +strongswan-mod-xauth-generic +strongswan-mod-eap-mschapv2 +strongswan-mod-dhcp +strongswan-mod-farp +xl2tpd
+LUCI_DEPENDS:=+kmod-tun +luci-lib-jsonc +strongswan +strongswan-minimal +strongswan-mod-kernel-libipsec +strongswan-mod-openssl +strongswan-mod-sha2 +strongswan-mod-attr +strongswan-mod-unity +strongswan-mod-xauth-generic
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/conffiles
