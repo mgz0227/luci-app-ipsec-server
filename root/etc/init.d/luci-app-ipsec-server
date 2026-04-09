@@ -200,10 +200,21 @@ start() {
 		  rightauth2=xauth
 		  
 		conn IKEv2-PSK
-		  also=Non-L2TP
 		  keyexchange=ikev2
+		  auto=add
+		  left=%defaultroute
 		  leftauth=psk
+		  leftsubnet=0.0.0.0/0
+		  right=%any
 		  rightauth=psk
+		  rightsourceip=${vt_clientip}
+
+		  ike=aes128-sha1-modp2048,aes128-sha1-modp1024,3des-sha1-modp1024,3des-sha1-modp1536
+		  esp=aes128-sha1,3des-sha1
+		  dpdaction=clear
+		  dpddelay=30s
+		  rekey=no
+		  compress=no
 
 		$ipsec_l2tp_config
 	EOF
