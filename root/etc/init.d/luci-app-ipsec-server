@@ -14,6 +14,8 @@ L2TP_LOG_FILE=${L2TP_PATH}/xl2tpd.log
 
 vt_clientip=$(uci -q get ${CONFIG}.@service[0].clientip)
 vt_serverip=$(uci -q get ${CONFIG}.@service[0].serverip)
+certs_name=$(uci -q get ${CONFIG}.@service[0].certs_name)
+private_key=$(uci -q get ${CONFIG}.@service[0].private_key)
 l2tp_enabled=$(uci -q get ${CONFIG}.@service[0].l2tp_enable)
 l2tp_localip=$(uci -q get ${CONFIG}.@service[0].l2tp_localip)
 
@@ -226,7 +228,7 @@ start() {
 		left=%defaultroute
 		leftid=@ns.miaogongzi.cc
 		leftauth=pubkey
-		leftcert=full.pem
+		leftcert=${certs_name}
 		leftsendcert=always
 		leftsubnet=0.0.0.0/0
 
@@ -252,7 +254,7 @@ start() {
 	cat > /etc/ipsec.secrets <<-EOF
 	# /etc/ipsec.secrets - strongSwan IPsec secrets file
 	: PSK "$vt_secret"
-	: RSA /etc/ipsec.d/private/server_key.pem
+	: RSA /etc/ipsec.d/private/$private_key
 	EOF
 	
 	local ipsec_users=$(get_enabled_anonymous_secs "@ipsec_users")
