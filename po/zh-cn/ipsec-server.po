@@ -10,6 +10,12 @@ msgstr "请使用支持 IPSec Xauth PSK 或 IPSec EAP 的客户端（iOS、Andro
 msgid "Current Condition"
 msgstr "当前状态"
 
+msgid "Checking..."
+msgstr "正在检查..."
+
+msgid "Status unavailable"
+msgstr "状态不可用"
+
 msgid "General settings"
 msgstr "基本设置"
 

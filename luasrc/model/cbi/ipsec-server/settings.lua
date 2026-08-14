@@ -1,5 +1,3 @@
-local sys = require "luci.sys"
-
 m = Map("luci-app-ipsec-server", translate("IPSec VPN Server"))
 m.template = "ipsec-server/ipsec-server_status"
 
@@ -9,7 +7,7 @@ s.anonymous = true
 o = s:option(DummyValue, "ipsec-server_status", translate("Current Condition"))
 o.rawhtml = true
 o.cfgvalue = function(t, n)
-	return '<font class="ipsec-server_status"></font>'
+	return '<span class="ipsec-server-status is-loading" role="status" aria-live="polite">' .. translate("Checking...") .. '</span>'
 end
 
 enabled = s:option(Flag, "enabled", translate("Enable"))
